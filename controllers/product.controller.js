@@ -82,7 +82,6 @@ const productCtrl = {
         special,
         stock,
       });
-      console.log(newProduct)
       await Category.findByIdAndUpdate(
         { _id: findCat._id },
         { $push: { product_id: newProduct._id } }

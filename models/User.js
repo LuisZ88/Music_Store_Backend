@@ -33,9 +33,9 @@ const UserSchema = new mongoose.Schema({
         ref: "Role",
         type: mongoose.Schema.Types.ObjectId
     },
-    
-    adress:{
-        type: String,
+    invoices:{
+        type: Array,
+        default:[]
     }
 },{
 timestamps: true,

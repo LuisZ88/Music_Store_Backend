@@ -14,10 +14,11 @@ router.post("/login", userCtrl.login);
 router.put("/updateUser",auth.verifyToken, userCtrl.updateUser);
 router.delete("/deleteUser",auth.verifyToken, userCtrl.deleteUser);
 router.get("/allUser/",[auth.verifyToken, auth.isAdmin], userCtrl.getAllUser);
-router.get("/getUser/:id",[auth.verifyToken, auth.isAdmin], userCtrl.getUserById);
+router.get("/getUser/:id",auth.verifyToken, userCtrl.getUserById);
 router.get("/getUser",auth.verifyToken, userCtrl.getUser);
 router.get('/validateUser', auth.verifyToken, userCtrl.validateUser)
 router.get('/validateAdmin', [auth.verifyToken, auth.isAdmin],userCtrl.validateAdmin)
+router.put('/updateInvoice', auth.verifyToken, userCtrl.uploadInvoice)
 
 
 module.exports = router;

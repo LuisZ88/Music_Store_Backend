@@ -13,7 +13,7 @@ const userCtrl = {
     return res.json({auth: true,})
   },
   signUp: async (req, res) => {
-    const { name, surname, email, password, adress, roles } = req.body;
+    const { name, surname, email, password, roles } = req.body;
 
     try {
       if (!name || !surname || !email || !password) {
@@ -46,7 +46,6 @@ const userCtrl = {
           surname,
           email,
           password: await User.encryptPassword(password),
-          adress,
         });
 
         if (roles) {
@@ -58,14 +57,15 @@ const userCtrl = {
         }
         const savedUser = await newUser.save();
         const token = jwt.sign({ id: savedUser._id }, process.env.SECRET, {
-          expiresIn: "7d", //15 minutos //
+          expiresIn: 90000, //15 minutos //
         });
         return res.status(200).send({
           success: true,
           token,
           message: "Usuario creado",
           name: newUser.name,
-          role: newUser.roles.name
+          role: newUser.roles.name,
+          expiresIn: "90000",
         });
       }
     } catch (error) {
@@ -169,7 +169,7 @@ const userCtrl = {
     try {
       let userFound = await User.findOne({ email: email }).populate("roles");
       if (!userFound) {
-        return res.status(400).send({
+        return res.json({
           success: false,
           message: "User not found",
         });
@@ -177,14 +177,14 @@ const userCtrl = {
       let passwordOk = await User.comparePassword(password, userFound.password);
 
       if (!passwordOk) {
-        return res.status(400).send({
+        return res.json({
           success: false,
-          message: "Wrong credentials",
+          message: "Contraseña incorrecta",
           token: null,
         });
       }
       const token = jwt.sign({ id: userFound._id }, process.env.SECRET, {
-        expiresIn: "7d", //15 minutos //
+        expiresIn: 90000, //15 minutos //
       });
       return res.status(200).send({
         success: true,
@@ -192,6 +192,7 @@ const userCtrl = {
         name: userFound.name,
         token: token,
         role: userFound.roles.name,
+        expiresIn: "90000"
       });
     } catch (error) {
       return res.status(500).send({
@@ -216,6 +217,21 @@ const userCtrl = {
           message: "User not found",
         });
       }
+    } catch (error) {
+      return res.status(500).send({
+        succes: false,
+        message: error.message,
+      });
+    }
+  },
+  uploadInvoice: async (req, res) => {
+    const id = req.user.id;
+    const invoice = req.body;
+    try {
+      let user = await User.findByIdAndUpdate(id, { $push: {invoices: invoice } });
+      return res.json({
+        success: true,
+      })
     } catch (error) {
       return res.status(500).send({
         succes: false,
