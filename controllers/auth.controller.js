@@ -195,7 +195,7 @@ const userCtrl = {
         expiresIn: "90000"
       });
     } catch (error) {
-      return res.status(500).send({
+      return res.json({
         success: false,
         message: error.message,
       });
