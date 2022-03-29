@@ -9,13 +9,14 @@ const express = require("express"),
     createRoles = require('./libs/initialSetup'),
     cors = require('cors')
     fileUpload = require('express-fileupload');
+ app.use(cors())
 app.use(fileUpload({
     useTempFiles: true
 }))
 
 
 
-app.use(cors())
+
 createRoles()
 app.use(express.json())
 app.use(express.urlencoded({
