@@ -28,8 +28,8 @@ mongoose.connect(URL).then(() => {
     console.log("DB IS CONNECTED")
 })
 
-app.listen(PORT, () => {
-    console.log(`Server listen at port ${PORT}`)
+app.listen( () => {
+    console.log(`Server listen`)
 })
 app.get("/",(req,res) =>{
 res.json({
