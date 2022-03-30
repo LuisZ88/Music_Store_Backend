@@ -93,7 +93,7 @@ const productCtrl = {
   getAllCategory: async (req, res) => {
     const { id } = req.params;
     try {
-      let category = await Category.findById(id).populate("product_id");
+      let category = await Category.findOne({title: id}).populate("product_id");
       return res.status(200).send({
         success: true,
         category,

@@ -1,4 +1,4 @@
-# Backend
+<!-- # Backend
 
 ---
 
@@ -81,4 +81,11 @@ Requiere tener token y ser administrador
 # InitialSetup
 
 La primera vez que  se inicia la base de datos comprueba si existen las categorías predefinidas y los roles de usuario. Si no existen los crea nuevos.
+ -->
+# Musicalia is React and Node.js  project based eCommerce platform.
 
+A responsive musical instrument store built from the beggining.
+The tools I have used:
+- Cloudinary for upload images
+- Expressjs
+- Mongoose
