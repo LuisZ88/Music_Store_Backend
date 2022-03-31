@@ -28,6 +28,7 @@ The tools I have used:
 2. `npm i`
 3. `npm start`
 4. `Frontend link`  https://github.com/LuisZ88/Music_Store
+5. `In MongoDb you need change role to admin for Admin account`
 
 ### Add variables
 .env needs the following data:
