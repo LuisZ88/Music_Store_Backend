@@ -26,7 +26,6 @@ const productCtrl = {
       description,
       category,
       special,
-      stock,
     } = req.body;
 
     if (!req.files.file || Object.keys(req.files.file).length === 0)
@@ -59,9 +58,7 @@ const productCtrl = {
     if (isNaN(price)) {
       return res.status(500).send({ msg: "price is not a number" });
     }
-    if (isNaN(stock)) {
-      return res.status(500).send({ msg: "stock is not a number" });
-    }
+   
     let findCat = await Category.findOne({ title: category });
     if (!findCat) {
       return res
