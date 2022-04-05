@@ -77,7 +77,7 @@ const productCtrl = {
         },
         description,
         special,
-        stock,
+        
       });
       await Category.findByIdAndUpdate(
         { _id: findCat._id },
@@ -131,11 +131,11 @@ const productCtrl = {
   },
   updateProductByID: async (req, res) => {
     const { id } = req.params;
-    const { price, stock } = req.body;
+    const { price} = req.body;
     try {
       const updatedProduct = await Product.findByIdAndUpdate(
         id,
-        { price, stock },
+        { price },
         { new: true }
       );
       return res.status(200).send({
