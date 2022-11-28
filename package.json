@@ -1,4 +1,5 @@
 {
+  
   "dependencies": {
     "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
@@ -12,13 +13,13 @@
     "mongoose": "^6.2.3"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node",
     "dev": "nodemon server.js"
   },
   "name": "proyecto3",
   "version": "1.0.0",
   "description": "Tienda música",
-  "main": "server.js",
+  "main": "./dist/server.js",
   "author": "Luis Acosta",
   "license": "ISC"
 }
