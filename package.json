@@ -13,7 +13,7 @@
     "mongoose": "^6.2.3"
   },
   "scripts": {
-    "start": "node",
+    "start": "node.",
     "dev": "nodemon server.js"
   },
   "name": "proyecto3",
