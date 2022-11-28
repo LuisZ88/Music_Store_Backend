@@ -14,12 +14,12 @@
   },
   "scripts": {
     "start": "node.",
-    "dev": "nodemon server.js"
+    "dev": "nodemon index.js"
   },
   "name": "proyecto3",
   "version": "1.0.0",
   "description": "Tienda música",
-  "main": "./dist/server.js",
+  "main": "./dist/index.js",
   "author": "Luis Acosta",
   "license": "ISC"
 }
