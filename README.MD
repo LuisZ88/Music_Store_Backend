@@ -43,7 +43,7 @@ The tools I have used:
 
 Single-Page Application with React server-side rendering.
 
-[Online Demo Store](https://musicalia-store.herokuapp.com/)
+[Online Demo Store](https://musicalia.vercel.app/)
 ***
 ***
 # Extra info
